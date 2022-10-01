@@ -1,0 +1,96 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://gameObjs/player.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 28.5, 29 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Player" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2( 0.5, -1 )
+shape = SubResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="RigidBody2D"]
+frames = SubResource( 1 )
+
+[node name="SpeedLines" type="Node2D" parent="."]
+scale = Vector2( 1, 1e-05 )
+
+[node name="Line2D" type="Line2D" parent="SpeedLines"]
+points = PoolVector2Array( -30, 0, -30, -50 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="Line2D2" type="Line2D" parent="SpeedLines"]
+position = Vector2( 62, -13 )
+points = PoolVector2Array( -30, 0, -30, -50 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="Line2D3" type="Line2D" parent="SpeedLines"]
+position = Vector2( -13, -16 )
+points = PoolVector2Array( -30, 0, -30, -50 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="Line2D4" type="Line2D" parent="SpeedLines"]
+position = Vector2( 75, 9 )
+points = PoolVector2Array( -30, 0, -30, -50 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="Line2D5" type="Line2D" parent="SpeedLines"]
+position = Vector2( -7, 40 )
+points = PoolVector2Array( -30, 0, -30, -50 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="Line2D6" type="Line2D" parent="SpeedLines"]
+position = Vector2( 45, -34 )
+points = PoolVector2Array( -30, 0, -30, -50 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="Line2D7" type="Line2D" parent="SpeedLines"]
+position = Vector2( 54, 64 )
+points = PoolVector2Array( -30, 0, -30, -50 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="Line2D8" type="Line2D" parent="SpeedLines"]
+position = Vector2( 12, 70 )
+points = PoolVector2Array( -30, 0, -30, -50 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="Line2D9" type="Line2D" parent="SpeedLines"]
+position = Vector2( -21, 54 )
+points = PoolVector2Array( -30, 0, -30, -50 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="Line2D10" type="Line2D" parent="SpeedLines"]
+position = Vector2( 68, 45 )
+points = PoolVector2Array( -30, 0, -30, -50 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="Line2D11" type="Line2D" parent="SpeedLines"]
+position = Vector2( 21, -21 )
+points = PoolVector2Array( -30, 0, -30, -50 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
