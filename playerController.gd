@@ -5,7 +5,7 @@ var direction = 0
 var sensativity = 2
 var prev_touch_pos : Vector2
 
-var speed = 50
+var speed = 200
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,3 +34,5 @@ func _process(delta):
     if direction != 0:
         var movement = delta * speed * direction;
         position.x += movement
+    
+    speed_scale = get_node("/root/Main").fall_speed / get_node("/root/Main").base_fall_speed
