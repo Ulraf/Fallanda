@@ -1,6 +1,7 @@
 extends Node2D
 
 var score
+export var fall_speed = 500
 
 
 # Called when the node enters the scene tree for the first time.

@@ -5,7 +5,6 @@ var base_sprite = preload("objects/base_bg.tscn")
 var cur_bg : Sprite
 var next_bg : Sprite
 
-var speed = 500
 var background_y0
 var background_height
 
@@ -21,7 +20,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-    var delta_movement = delta * speed
+    var delta_movement = delta * get_node("/root/Main").fall_speed
     
     cur_bg.position.y -= delta_movement
     next_bg.position.y -= delta_movement
