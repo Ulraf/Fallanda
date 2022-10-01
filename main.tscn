@@ -1,14 +1,16 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/bg.png" type="Texture" id=1]
-[ext_resource path="res://gameObjs/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/panda.png" type="Texture" id=1]
+[ext_resource path="res://background.gd" type="Script" id=2]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 8.22, 8.22 )
-texture = ExtResource( 1 )
-centered = false
+[node name="background" type="Container" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 208, 233 )
+[node name="Panda" type="Sprite" parent="."]
+position = Vector2( 213, 248 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 1 )
