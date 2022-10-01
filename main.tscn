@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/panda.png" type="Texture" id=1]
 [ext_resource path="res://background.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://objects/ui.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/collectable.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/chill-abstract-intention-12099.mp3" type="AudioStream" id=6]
+[ext_resource path="res://playerController.gd" type="Script" id=7]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -43,8 +44,7 @@ script = ExtResource( 2 )
 position = Vector2( 205, 212 )
 scale = Vector2( 8.22, 8.22 )
 frames = SubResource( 5 )
-frame = 2
-playing = true
+script = ExtResource( 7 )
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
