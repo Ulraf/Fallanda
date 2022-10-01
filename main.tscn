@@ -1,11 +1,17 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/panda.png" type="Texture" id=1]
 [ext_resource path="res://background.gd" type="Script" id=2]
 [ext_resource path="res://main.gd" type="Script" id=3]
 [ext_resource path="res://objects/ui.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/collectable.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/chill-abstract-intention-12099.mp3" type="AudioStream" id=6]
 [ext_resource path="res://playerController.gd" type="Script" id=7]
+
+[sub_resource type="Curve2D" id=6]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 50, 773, 0, 0, 0, 0, 118, 837, 0, 0, 0, 0, 180, 775, 0, 0, 0, 0, 243, 839, 0, 0, 0, 0, 309, 785, 0, 0, 0, 0, 362, 830, 0, 0, 0, 0, 50, 773 )
+}
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -31,24 +37,17 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Curve2D" id=6]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 50, 773, 0, 0, 0, 0, 118, 837, 0, 0, 0, 0, 180, 775, 0, 0, 0, 0, 243, 839, 0, 0, 0, 0, 309, 785, 0, 0, 0, 0, 362, 830, 0, 0, 0, 0, 50, 773 )
-}
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 78.5, 52.5 )
 
 [node name="Main" type="Node"]
 script = ExtResource( 3 )
+collectable_scene = ExtResource( 5 )
 
 [node name="background" type="Container" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 2 )
-
-[node name="Player" type="AnimatedSprite" parent="."]
-position = Vector2( 205, 212 )
-scale = Vector2( 8.22, 8.22 )
-frames = SubResource( 5 )
-script = ExtResource( 7 )
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
@@ -66,3 +65,19 @@ curve = SubResource( 6 )
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2( 50, 773 )
 rotation = 0.755086
+
+[node name="Player" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="Player" type="AnimatedSprite" parent="Player"]
+position = Vector2( 205, 212 )
+scale = Vector2( 8.22, 8.22 )
+frames = SubResource( 5 )
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( 202.5, 209.5 )
+shape = SubResource( 7 )
+
+[connection signal="timeout" from="collectableTimer" to="." method="_on_collectableTimer_timeout"]
+[connection signal="body_shape_entered" from="Player" to="." method="_on_Player_body_shape_entered"]
